@@ -8,6 +8,7 @@ import logging
 import os
 import socket
 import time
+import ssl
 
 import voluptuous as vol
 
@@ -365,7 +366,7 @@ class MQTT(object):
 
         if certificate is not None:
             self._mqttc.tls_set(certificate, certfile=client_cert,
-                                keyfile=client_key)
+                                keyfile=client_key, tls_version=ssl.PROTOCOL_TLSv1_1)
 
         if tls_insecure is not None:
             self._mqttc.tls_insecure_set(tls_insecure)
